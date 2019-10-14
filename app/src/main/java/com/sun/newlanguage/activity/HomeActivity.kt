@@ -56,5 +56,13 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, SendActivity::class.java))
         }
 
+        model.setOnClickListener {
+            startActivity(Intent(this, ModelActivity::class.java))
+        }
+
+        add_view.setOnClickListener {
+            startActivity(Intent(this, AddViewActivity::class.java))
+        }
+
     }
 }

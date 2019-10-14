@@ -65,6 +65,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
+                <Button
+                        android:id="@+id/model"
+                        android:text="model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                <Button
+                        android:id="@+id/add_view"
+                        android:text="addview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
             </LinearLayout>
 
             <com.sun.newlanguage.design.RoundImage
