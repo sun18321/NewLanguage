@@ -1,24 +1,26 @@
 package com.sun.newlanguage
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
+import okhttp3.*
+import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 
-class Test :ViewModel(){
-
-    val partModel = MutableLiveData<String>().apply {
-       value = ALL
-    }
-
-
-
+class Test {
     private fun test() {
+        val client = OkHttpClient.Builder().connectTimeout(1000, TimeUnit.SECONDS)
+            .connectTimeout(1000, TimeUnit.SECONDS).build()
+        val request = Request.Builder().url("123").get().build()
+        client.newCall(request).enqueue(object :Callback{
+            override fun onFailure(call: Call, e: IOException) {
 
-    }
+            }
 
-    companion object{
-        private const val ALL = "all"
+            override fun onResponse(call: Call, response: Response) {
+
+            }
+
+        })
+
     }
 
 }
