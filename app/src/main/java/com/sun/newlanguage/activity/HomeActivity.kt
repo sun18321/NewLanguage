@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Process
 import android.util.Log
 import com.sun.newlanguage.R
 import kotlinx.android.synthetic.main.activity_home.*
@@ -62,6 +63,22 @@ class HomeActivity : AppCompatActivity() {
 
         add_view.setOnClickListener {
             startActivity(Intent(this, AddViewActivity::class.java))
+        }
+
+        button_view.setOnClickListener {
+            startActivity(Intent(this, CommonViewPageActivity::class.java))
+        }
+
+        button_transparent.setOnClickListener {
+            startActivity(Intent(this, TransparentActivity::class.java))
+        }
+
+        button_kill.setOnClickListener {
+            Process.killProcess(Process.myPid())
+        }
+
+        button_data.setOnClickListener {
+            startActivity(Intent(this, DataBindingActivity::class.java))
         }
 
     }

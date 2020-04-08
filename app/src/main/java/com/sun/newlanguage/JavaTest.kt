@@ -1,26 +1,20 @@
 package com.sun.newlanguage
 
-import android.content.Context
-import android.util.AttributeSet
-import android.widget.FrameLayout
+import android.os.Handler
+import android.os.Message
 
-class JavaTest : FrameLayout, JavaInterface {
-    constructor(context: Context) : super(context) {}
+import java.lang.reflect.Method
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {}
+class JavaTest {
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-    }
-
-    override fun one() {
-        Thread(Runnable { }).start()
-    }
-
-    override fun two() {
+    private fun test() {
+        try {
+            val name = Class.forName("123")
+            val method = name.getDeclaredMethod("start", Int::class.javaPrimitiveType)
+            val o = method.invoke(name.newInstance(), 2)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
     }
 }

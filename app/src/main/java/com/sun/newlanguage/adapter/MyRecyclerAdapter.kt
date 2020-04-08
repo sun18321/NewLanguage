@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sun.newlanguage.R
 import kotlinx.android.synthetic.main.text.view.*
+import kotlinx.android.synthetic.main.viewpager_item.view.*
 
 class MyRecyclerAdapter(private val mContext: Context):RecyclerView.Adapter<MyRecyclerAdapter.MyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
