@@ -30,8 +30,11 @@ class DataBindingActivity : AppCompatActivity() {
         val adapter = NewAdapter()
         binding.recycler.adapter = adapter
         mLiveList.observe(this){
-            Log.d("data_binding", "receive data change size:${it.size}")
-            adapter.submitList(it)
+            Log.d("data_binding", "receive data change size:${it.size}--0:${it[0]}")
+            val newList = mutableListOf<NewAdapterBean>()
+            newList.addAll(it)
+            Log.d("data_binding", "new list size:${it.size}--0:${it[0]}")
+            adapter.submitList(newList)
         }
 
 
