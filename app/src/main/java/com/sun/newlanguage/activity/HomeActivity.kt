@@ -25,11 +25,6 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
@@ -81,5 +76,35 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, DataBindingActivity::class.java))
         }
 
+        button_scroll.setOnClickListener {
+            startActivity(Intent(this, NestedActivity::class.java))
+        }
+
+        button_coroutine.setOnClickListener {
+            startActivity(Intent(this, CoroutineActivity::class.java))
+        }
+
+        button_progress.setOnClickListener {
+            startActivity(Intent(this, ProgressActivity::class.java))
+        }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.d("home","on pause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.d("home","on stop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d("home","on destroy")
     }
 }

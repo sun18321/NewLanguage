@@ -18,12 +18,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.DataBindingActivity"></activity>
+        <activity android:name=".activity.CoroutineActivity" />
+        <activity android:name=".activity.NestedActivity" />
+        <activity android:name=".activity.DataBindingActivity" />
 
         <service
             android:name=".design.TimeService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".activity.TransparentActivity"

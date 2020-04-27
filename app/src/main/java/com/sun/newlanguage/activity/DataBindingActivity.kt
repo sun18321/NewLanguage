@@ -30,31 +30,47 @@ class DataBindingActivity : AppCompatActivity() {
         val adapter = NewAdapter()
         binding.recycler.adapter = adapter
         mLiveList.observe(this){
-            Log.d("data_binding", "receive data change size:${it.size}--0:${it[0]}")
-            val newList = mutableListOf<NewAdapterBean>()
-            newList.addAll(it)
-            Log.d("data_binding", "new list size:${it.size}--0:${it[0]}")
-            adapter.submitList(newList)
+//            Log.d("data_binding", "receive data change size:${it.size}--0:${it[0]}")
+//            adapter.submitList(null)
+//            Log.d("data_binding","hashcode:${it.hashCode()}")
+            adapter.submitList(it)
+            adapter.notifyDataSetChanged()
         }
 
 
-        val list = mutableListOf<NewAdapterBean>()
+        val oldList = mutableListOf<NewAdapterBean>()
         for(index in 0..5){
-            list.add(NewAdapterBean("jordan-$index", index))
+            oldList.add(NewAdapterBean("jordan-$index", index))
         }
-        mLiveList.postValue(list)
+        mLiveList.postValue(oldList)
 
 //        adapter.submitList(list)
 
         GlobalScope.launch(Dispatchers.Main) {
             delay(5000)
             Log.d("data_binding","modify list data")
+//
+            val newList = mutableListOf<NewAdapterBean>()
+//            newList.addAll(list)
+//
+//            newList[0].name = "普京"
+//            newList[0].money = 888
+//            newList.add(NewAdapterBean("特朗普", 9999))
 
-            list[0].name = "普京"
-            list[0].money = 888
-            list.add(NewAdapterBean("特朗普", 9999))
 
-            mLiveList.postValue(list)
+            for (index in 0..5) {
+                newList.add(oldList[index])
+            }
+
+            val copy = oldList[0].copy()
+            Log.d("data_binding","before copy:${oldList[0].hashCode()}----after copy:${copy.hashCode()}")
+
+            for(index in 0..5){
+//                newList.add(NewAdapterBean("特朗普-$index", index))
+                newList[index].money = 7777
+            }
+
+            mLiveList.postValue(newList)
         }
     }
 }
